@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "Address">
+
+    <insert id = "insert" parameterType = "com.parth.shon.models.Address">
+        insert into address(aptnumber, aptname, city, state, moveindate)
+        VALUES (#{aptname}, #{aptname}, #{city}, #{state}, #{moveindate});
+    </insert>
+
+    <select id = "getById" parameterType = "int" resultMap = "result">
+        SELECT * FROM address WHERE aptnumber = #{id};
+    </select>
+
+    <resultMap id = "result" type = "com.parth.shon.models.Address">
+        <result property = "aptnumber" column = "aptnumber"/>
+        <result property = "aptname" column = "aptname"/>
+        <result property = "city" column = "city"/>
+        <result property = "state" column = "state"/>
+        <result property = "moveindate" column = "moveindate"/>
+    </resultMap>
+
+</mapper>
