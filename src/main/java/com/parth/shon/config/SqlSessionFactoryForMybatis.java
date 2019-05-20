@@ -21,6 +21,8 @@ public class SqlSessionFactoryForMybatis {
     DataSource dataSource;
 
     SqlSessionFactory sqlSessionFactory;
+    
+    ClassPathResource config = new ClassPathResource("classpath:mybatis/mybatis-config.xml");
 
     @Bean("sqlSessionFactoryold")
     public SqlSessionFactory createSqlSessionfactory() throws Exception{
@@ -28,10 +30,10 @@ public class SqlSessionFactoryForMybatis {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
 
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = resolver.getResources("classpath:mybatis/mybatis-config.xml");
-
-        sessionFactoryBean.setMapperLocations(resources);
+        //PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        //Resource[] resources = resolver.getResources("classpath:mybatis/mybatis-config.xml");
+        //sessionFactoryBean.setMapperLocations(resources);
+        sessionFactoryBean.setConfigLocation(config);
         return sessionFactoryBean.getObject();
 
     }
